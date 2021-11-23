@@ -1,24 +1,28 @@
 <template>
   <q-page class="flex flex-center">
-    <el-upload
-      :show-file-list="false"
-      :on-success="handleAvatarSuccess"
-      :before-upload="beforeAvatarUpload"
-      class="avatar-uploader"
-      action="https://jsonplaceholder.typicode.com/posts/"
-    >
-      <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-      <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-    </el-upload>
+    <theme></theme>
+    <div class="up">
+      <upload></upload>
+    </div>
   </q-page>
 </template>
+  
+
+
 <script>
+import upload from '../components/upload.vue';
+import theme from '../components/theme.vue'
 export default {
   name: "PageIndex",
-  data() {
-    return {
-      imageUrl: "",
-    };
-  },
+  components: {
+    upload,
+    theme
+  }
 }
 </script>
+
+<style>
+.up {
+  margin-left: -5%;
+}
+</style>
