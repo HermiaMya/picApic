@@ -85,4 +85,8 @@ export default {
 .all {
   background: "~picture/back.jpg";
 }
+.bg-primary {
+    background: none !important;
+    background: none !important;
+}
 </style>

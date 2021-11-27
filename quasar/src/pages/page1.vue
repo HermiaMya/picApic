@@ -1,10 +1,9 @@
 <template>
   <q-page class="flex flex-center">
     <theme></theme>
-    <div style="position:relative">
-   <img src="https://i.loli.net/2021/11/25/IoNVuORKSp7d3ga.jpg">
-   <el-button style="background:none;width:150px;height:40px;position:absolute;right: 52%;top:67%;boarder:none;font-size:24px" @click="addRoutes1"></el-button>
-   <img/>
+    <div class="up">
+      <upload style="margin-top:50px; margin-left:50px"></upload>
+      <submenu1 style="margin-top:50px; margin-left:50px"></submenu1>
     </div>
   </q-page>
 </template>
@@ -14,25 +13,22 @@
 <script>
 import upload from '../components/upload.vue';
 import theme from '../components/theme.vue'
+import submenu1 from '../components/submenu1.vue'
 export default {
   name: "PageIndex",
   components: {
     upload,
-    theme
+    theme,
+    submenu1
   },
   mounted () {
     document.querySelector("body").style.backgroundImage =
-      "url('https://i.loli.net/2021/11/25/fhIQ3w5su6EALWN.gif') ";
+      "url('https://i.loli.net/2021/11/24/5kA2cdmWuKjJMDT.gif') ";
       document.querySelector("body").style.backgroundAttachment= 'fixed';
       document.querySelector("body").style.backgroundSize= 'cover';
-  },
-    methods: {
-    addRoutes1 () {
-      this.$router.push('/page1')
-    },
-    }
-}
+  }
 
+}
 </script>
 
 <style>
