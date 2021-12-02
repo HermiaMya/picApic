@@ -133,6 +133,9 @@ export default {
       value7: 0,
       value8: 0
     }
+  },
+  method(){
+    
   }
 }
 </script> 

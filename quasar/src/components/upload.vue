@@ -40,6 +40,9 @@
 <script>
 export default {
   name: "upload",
+  mounted(){
+    this.$emit('func', this.file+"111")
+  },
   data () {
     return {
       dataForm: {
@@ -54,9 +57,10 @@ export default {
       limit: 1,
       hideUpload: false, //是否显示上传图片的加号
       deleteImgFileList: [], //存已被删除了的图片的id
-    };
+    }
   },
   methods: {
+    
     handleAvatarSuccess (res, file) {
       this.imageUrl = URL.createObjectURL(file.raw);
     },
