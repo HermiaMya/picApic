@@ -2,41 +2,48 @@
   <q-page class="flex flex-center">
     <theme></theme>
     <div class="uup">
-      <div class="up">
-          <el-form
-    :model="dataForm"
-    ref="dataForm"
-    label-width="80px"
-    style="width=800px;"
-  >
-    <el-form-item :class="{ hide: hideUpload }">
-      <div class="up">
-        <el-upload
-          ref="upload"
-          action="#"
-          :file-list="dataForm.imgFileList"
-          list-type="picture-card"
-          :on-preview="handlePictureCardPreview"
-          :on-change="OnChange"
-          :on-remove="handleRemove"
-          :on-exceed="handleExceed"
-          accept="image/jpeg,image/png"
-          :auto-upload="false"
+      <div class="up" >
+        <el-form
+        :model="dataForm"
+        ref="dataForm"
+        label-width="80px"
+        style="width=800px;"
         >
-          <i class="el-icon-plus"></i>
-          <div class="el-upload__tip" slot="tip">
-            只能上传jpg/png文件，最多上传1张且单张图片不超过5M
+        <el-form-item :class="{ hide: hideUpload }">
+          <div class="up" style="float:left">
+            <div class="left">
+            <el-upload
+            ref="upload"
+            action="#"
+            :file-list="dataForm.imgFileList"
+            list-type="picture-card"
+            :on-preview="handlePictureCardPreview"
+            :on-change="OnChange"
+            :on-remove="handleRemove"
+            :on-exceed="handleExceed"
+            :limit="1"
+            :class="{ hide: hideUpload }"
+            accept="image/jpeg,image/png"
+            :auto-upload="false"
+            >
+              <i class="el-icon-plus"></i>
+              <div class="el-upload__tip" slot="tip">
+                只能上传jpg/png文件，最多上传1张且单张图片不超过5M
+              </div>
+            </el-upload>
+            </div>
+            <div class="Left" style="float:right">
+            <el-avatar shape="square" :size="320":src="url"></el-avatar>
+            </div>
           </div>
-        </el-upload>
-      </div>
-      <el-dialog :visible.sync="dialogVisible" append-to-body>
-        <img width="100%" :src="dialogImageUrl" alt="" />
-      </el-dialog>
-    </el-form-item>
-    <el-form-item>
-      <el-button type="primary" @click="submitUpload()">确定</el-button>
-    </el-form-item>
-  </el-form>
+          <el-dialog :visible.sync="dialogVisible" append-to-body>
+            <img width="100%" :src="dialogImageUrl" alt="" />
+          </el-dialog>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitUpload()">确定</el-button>
+        </el-form-item>
+      </el-form>
       </div>
       <submenu3></submenu3>
     </div>
@@ -48,6 +55,7 @@
 <script>
 import theme from '../components/theme.vue'
 import submenu3 from '../components/submenu3.vue'
+import axios from 'axios'
 export default {
   name: "Page3",
   components: {
@@ -66,6 +74,10 @@ export default {
     },
     handleAvatarSuccess (res, file) {
       this.imageUrl = URL.createObjectURL(file.raw);
+    },
+    handleChange(fileList) {
+      this.hideUpload = fileList.length >= this.limitCount;
+      this.hideUpload = true; //此时值为ture时 才会执行隐藏
     },
     beforeAvatarUpload (file) {
       const isJPG = file.type === "image/jpeg";
@@ -87,10 +99,11 @@ export default {
         formData.append("file", file.raw);
       });
       // 以下代码可以根据实际情况自己来实现
-      this.$http({
+      axios({
         url: this.uploadUrl,
         method: "post",
         data: formData,
+        responseType:'blob',
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -106,8 +119,11 @@ export default {
         } else {
           this.$message.error(data.msg);
         }
+        console.log("ok")
+        this.url=window.URL.createObjectURL(res.data);
       });
     },
+
     //预览图片时
     handlePictureCardPreview (file) {
       this.dialogImageUrl = file.url;
@@ -160,6 +176,7 @@ export default {
       limit: 1,
       hideUpload: false, //是否显示上传图片的加号
       deleteImgFileList: [], //存已被删除了的图片的id
+      url:""
     }
   }
 
@@ -189,6 +206,9 @@ export default {
   height: 320px;
   line-height: 300px;
   background: none;
+}
+.hide .el-upload--picture-card {
+  display: none;
 }
 .uup .el-upload-list--picture-card .el-upload-list__item {
   overflow: hidden;
@@ -241,6 +261,19 @@ export default {
 }
 .uup .q-panel > div {
     height: 100%;
-    width: 108%;
+    width: 120%;
+}
+ .el-avatar {
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    background:transparent;
+    border: 1px solid #c0ccda;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    border-radius: 6px;
 }
 </style>

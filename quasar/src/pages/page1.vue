@@ -20,6 +20,8 @@
           :on-change="OnChange"
           :on-remove="handleRemove"
           :on-exceed="handleExceed"
+          :limit="1"
+          :class="{ hide: hideUpload }"
           accept="image/jpeg,image/png"
           :auto-upload="false"
         >
@@ -63,6 +65,13 @@ export default {
   methods: {
 		speak(msg){
       console.log(msg);//我是子组件发送的消息！
+    },
+    handleRemove(file, fileList) {
+      this.hideUpload = fileList.length >= this.limitCount;
+    },
+    handleChange(fileList) {
+      this.hideUpload = fileList.length >= this.limitCount;
+      this.hideUpload = true; //此时值为ture时 才会执行隐藏
     },
     handleAvatarSuccess (res, file) {
       this.imageUrl = URL.createObjectURL(file.raw);
@@ -189,6 +198,9 @@ export default {
   height: 320px;
   line-height: 300px;
   background: none;
+}
+.hide .el-upload--picture-card {
+  display: none;
 }
 .uupp .el-upload-list--picture-card .el-upload-list__item {
   overflow: hidden;

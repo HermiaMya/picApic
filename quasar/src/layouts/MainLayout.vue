@@ -10,7 +10,6 @@
           <q-route-tab to="/page4" label="精准修图" />
         </q-tabs>
       </q-header>
-
       <q-page-container>
         <router-view />
       </q-page-container>

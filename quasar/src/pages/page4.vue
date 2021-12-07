@@ -19,6 +19,8 @@
               :on-change="OnChange"
               :on-remove="handleRemove"
               :on-exceed="handleExceed"
+              :class="{ hidee: hideUpload }"
+              :limit="1"
               accept="image/jpeg,image/png"
               :auto-upload="false"
             >
@@ -65,6 +67,10 @@ export default {
     },
     handleAvatarSuccess (res, file) {
       this.imageUrl = URL.createObjectURL(file.raw);
+    },
+    handleChange(fileList) {
+      this.hideUpload = fileList.length >= this.limit;
+      this.hideUpload = true; //此时值为ture时 才会执行隐藏
     },
     beforeAvatarUpload (file) {
       const isJPG = file.type === "image/jpeg";
@@ -186,6 +192,9 @@ export default {
   background: none;
   margin-left:150px;
   margin-top:-50px;
+}
+.hidee .el-upload--picture-card {
+  display: none;
 }
 .upp .el-upload-list--picture-card  .el-upload-list__item {
   overflow: hidden;

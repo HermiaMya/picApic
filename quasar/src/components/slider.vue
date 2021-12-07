@@ -3,7 +3,7 @@
   <div style="display:inline; width:200px">
     <div class="q-pa-md" style="float:left; width:25%">
       <q-badge color="pink-3">
-        亮度
+        灰度
       </q-badge>
       <q-slider
         v-model="value1"
@@ -17,7 +17,7 @@
     </div>
     <div class="q-pa-md" style="float:left; width:25%">
       <q-badge color="pink-3">
-        明度
+        色相
       </q-badge>
       <q-slider
         v-model="value2"
@@ -31,7 +31,7 @@
     </div>
     <div class="q-pa-md" style="float:right; width:25%">
       <q-badge color="pink-3">
-        冷暖
+        模糊度
       </q-badge>
       <q-slider
         v-model="value3"
@@ -45,7 +45,7 @@
     </div>
     <div class="q-pa-md" style="float:right; width:25%">
       <q-badge color="pink-3">
-        颜色
+        反转
       </q-badge>
       <q-slider
         v-model="value4"
@@ -62,7 +62,7 @@
   <div style="display:inline; width:200px">
     <div class="q-pa-md" style="float:left; width:25%">
       <q-badge color="pink-3">
-        锐度
+        亮度
       </q-badge>
       <q-slider
         v-model="value5"
@@ -76,7 +76,7 @@
     </div>
     <div class="q-pa-md" style="float:left; width:25%">
       <q-badge color="pink-3">
-        明度
+        透明度
       </q-badge>
       <q-slider
         v-model="value6"
@@ -90,7 +90,7 @@
     </div>
     <div class="q-pa-md" style="float:right; width:25%">
       <q-badge color="pink-3">
-        冷暖
+        对比度
       </q-badge>
       <q-slider
         v-model="value7"
@@ -104,7 +104,7 @@
     </div>
     <div class="q-pa-md" style="float:right; width:25%">
       <q-badge color="pink-3">
-        颜色
+        饱和度
       </q-badge>
       <q-slider
         v-model="value8"
