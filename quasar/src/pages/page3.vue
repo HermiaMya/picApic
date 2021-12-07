@@ -45,7 +45,7 @@
         </el-form-item>
       </el-form>
       </div>
-      <submenu3></submenu3>
+      <submenu3 @func="getchannel"></submenu3>
     </div>
   </q-page>
 </template>
@@ -69,8 +69,10 @@ export default {
       document.querySelector("body").style.backgroundSize= 'cover';
   },
   methods: {
-		speak(msg){
-      console.log(msg);//我是子组件发送的消息！
+
+		getchannel(data){
+          this.tab = data
+          console.log(this.tab)
     },
     handleAvatarSuccess (res, file) {
       this.imageUrl = URL.createObjectURL(file.raw);
@@ -97,6 +99,7 @@ export default {
         console.log(file.raw);
         console.log(file.size);
         formData.append("file", file.raw);
+        formData.append(this.dataForm.tab)
       });
       // 以下代码可以根据实际情况自己来实现
       axios({
@@ -120,7 +123,7 @@ export default {
           this.$message.error(data.msg);
         }
         console.log("ok")
-        this.url=window.URL.createObjectURL(res.data);
+        this.url=window.URL.createObjectURL(data.image_url);
       });
     },
 
@@ -166,11 +169,12 @@ export default {
     return {
       dataForm: {
         imgFileList: [],
+        tab:""
       },
 
       //图片上传的参数
       visible: false,
-      uploadUrl: "",
+      uploadUrl: "http:127.0.0.1:8000/pixel/main.html",
       dialogImageUrl: "",
       dialogVisible: false,
       limit: 1,

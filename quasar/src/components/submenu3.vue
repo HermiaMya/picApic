@@ -10,9 +10,9 @@
           indicator-color="purple"
           align="justify"
         >
-          <q-tab name="mails" label="动漫脸" />
-          <q-tab name="alarms" label="字符画" />
-          <q-tab name="movies" label="像素画" />
+          <q-tab name="3-1" label="动漫脸" />
+          <q-tab name="3-2" label="字符画" />
+          <q-tab name="3-3" label="像素画" />
         </q-tabs>
 
         <q-tab-panels v-model="tab" animated class="bg-primary text-white">
@@ -64,9 +64,15 @@
 export default {
   data () {
     return {
-      tab: 'mails'
+      tab: '3-1'
     }
-  }
+  },
+  methods:{
+         sendMsg(){
+             //func: 是父组件指定的传数据绑定的函数，this.msg:子组件给父组件传递的数据
+             this.$emit('func',this.tab)
+         }
+     }
 }
 </script>
 
