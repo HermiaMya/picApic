@@ -36,7 +36,7 @@ const routes = [
     path:'/page4',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      {path: '/page4', component: () => import('pages/page4.vue')}
+      {path: '/page4', component: () => import('pages/picApic.vue')}
     ]
   },
 

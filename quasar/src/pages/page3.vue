@@ -97,9 +97,9 @@ export default {
       let formData = new FormData(); //  用FormData存放上传文件
       this.dataForm.imgFileList.forEach((file) => {
         console.log(file.raw);
-        console.log(file.size);
+        console.log(this.dataForm.tab);
         formData.append("file", file.raw);
-        formData.append(this.dataForm.tab)
+        formData.append("tab",this.dataForm.tab);
       });
       // 以下代码可以根据实际情况自己来实现
       axios({

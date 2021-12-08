@@ -16,7 +16,7 @@
         </q-tabs>
 
         <q-tab-panels v-model="tab" animated class="bg-primary text-white">
-          <q-tab-panel name="mails">
+          <q-tab-panel name="3-1">
             <q-img
               src="https://i.loli.net/2021/11/26/3wckgSQo6DXHGzm.jpg"
               spinner-color="white"
@@ -29,7 +29,7 @@
             />
           </q-tab-panel>
 
-          <q-tab-panel name="alarms">
+          <q-tab-panel name="3-2">
             <q-img
               src="https://i.loli.net/2021/11/26/woV1Q5HBzqFChZu.jpg"
               spinner-color="white"
@@ -42,7 +42,7 @@
             />
           </q-tab-panel>
 
-          <q-tab-panel name="movies">
+          <q-tab-panel name="3-3">
             <q-img
               src="https://i.loli.net/2021/11/26/4RykKnvgwhBboXi.jpg"
               spinner-color="white"
