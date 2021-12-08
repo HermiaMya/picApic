@@ -2,45 +2,48 @@
   <q-page class="flex flex-center">
     <theme></theme>
     <div class="uupp">
-      <div class="up">
         <el-form
-    :model="dataForm"
-    ref="dataForm"
-    label-width="80px"
-    style="width=800px;"
-  >
-    <el-form-item :class="{ hide: hideUpload }">
-      <div class="up">
-        <el-upload
-          ref="upload"
-          action="#"
-          :file-list="dataForm.imgFileList"
-          list-type="picture-card"
-          :on-preview="handlePictureCardPreview"
-          :on-change="OnChange"
-          :on-remove="handleRemove"
-          :on-exceed="handleExceed"
-          :limit="1"
-          :class="{ hide: hideUpload }"
-          accept="image/jpeg,image/png"
-          :auto-upload="false"
+          :model="dataForm"
+          ref="dataForm"
+          label-width="80px"
+          style="width=800px;"
         >
-          <i class="el-icon-plus"></i>
-          <div class="el-upload__tip" slot="tip">
-            只能上传jpg/png文件，最多上传1张且单张图片不超过5M
+        <el-form-item :class="{ hide: hideUpload }">
+          <div class="up">
+            <div style="float:left">
+              <el-upload
+                ref="upload"
+                action="#"
+                :file-list="dataForm.imgFileList"
+                list-type="picture-card"
+                :on-preview="handlePictureCardPreview"
+                :on-change="OnChange"
+                :on-remove="handleRemove"
+                :on-exceed="handleExceed"
+                :limit="1"
+                :class="{ hide: hideUpload }"
+                accept="image/jpeg,image/png"
+                :auto-upload="false"
+              >
+                <i class="el-icon-plus"></i>
+                <div class="el-upload__tip" slot="tip">
+                  只能上传jpg/png文件，最多上传1张且单张图片不超过5M
+                </div>
+              </el-upload>
+            </div>
+            <div style="float:right">
+              <el-avatar shape="square" :size="320":src="url"></el-avatar>
+            </div>
           </div>
-        </el-upload>
-      </div>
-      <el-dialog :visible.sync="dialogVisible" append-to-body>
-        <img width="100%" :src="dialogImageUrl" alt="" />
-      </el-dialog>
-    </el-form-item>
-    <el-form-item>
-      <el-button type="primary" @click="submitUpload()">确定</el-button>
-    </el-form-item>
-  </el-form>
-      </div>
-      <submenu1></submenu1>
+          <el-dialog :visible.sync="dialogVisible" append-to-body>
+            <img width="100%" :src="dialogImageUrl" alt="" />
+          </el-dialog>
+        </el-form-item>
+        <el-form-item style="float:center">
+          <el-button type="primary" @click="submitUpload()">确定</el-button>
+        </el-form-item>
+        </el-form>
+      <submenu1 style="float:center"></submenu1>
     </div>
   </q-page>
 </template>
@@ -176,12 +179,12 @@ export default {
 </script>
 
 <style>
-.up {
-  margin-left: -4%;
+.uupp .up {
+  margin-left: -8%;
   margin-top: 5%;
 }
 .uupp .q-pa-md {
-    padding: 0px 0px;
+    padding: 0px 100px;
 }
 .uupp .avatar-uploader .el-upload {
   border: 1px dashed #d9d9d9;
@@ -247,7 +250,7 @@ export default {
     padding: 12px 20px;
     font-size: 14px;
     border-radius: 4px;
-    margin-left: 30px;
+    margin-left: 175px;
 }
 .uupp .q-tab-panel {
     padding: 2px;
@@ -255,5 +258,18 @@ export default {
 .uupp .q-panel > div {
     height: 100%;
     width: 200%;
+}
+.el-avatar {
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    background:transparent;
+    border: 1px solid #c0ccda;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    border-radius: 6px;
 }
 </style>

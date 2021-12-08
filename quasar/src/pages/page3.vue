@@ -10,8 +10,8 @@
         style="width=800px;"
         >
         <el-form-item :class="{ hide: hideUpload }">
-          <div class="up" style="float:left">
-            <div class="left">
+          <div class="up">
+            <div style="float:left">
             <el-upload
             ref="upload"
             action="#"
@@ -32,7 +32,7 @@
               </div>
             </el-upload>
             </div>
-            <div class="Left" style="float:right">
+            <div style="float:right">
             <el-avatar shape="square" :size="320":src="url"></el-avatar>
             </div>
           </div>
@@ -188,12 +188,12 @@ export default {
 </script>
 
 <style>
-.up {
+.uup .up {
   margin-left: -4%;
-  margin-top: 5%;
+  margin-top: 2%;
 }
 .uup .q-pa-md {
-    padding: 0px 0px;
+    padding: 0px 100px;
 }
 .uup .avatar-uploader .el-upload {
   border: 1px dashed #d9d9d9;
@@ -259,6 +259,7 @@ export default {
     padding: 12px 20px;
     font-size: 14px;
     border-radius: 4px;
+    margin-left: 185px;
 }
 .uup .q-tab-panel {
     padding: 2px;
