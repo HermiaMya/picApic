@@ -3,7 +3,7 @@
     :model="dataForm"
     ref="dataForm"
     label-width="80px"
-    style="width=800px"
+    style="width=800px;"
   >
     <el-form-item :class="{ hide: hideUpload }">
       <div class="up">
@@ -11,7 +11,7 @@
           ref="upload"
           action="#"
           multiple
-          :limit="limit"
+          :limit="1"
           :file-list="dataForm.imgFileList"
           list-type="picture-card"
           :on-preview="handlePictureCardPreview"
@@ -40,6 +40,9 @@
 <script>
 export default {
   name: "upload",
+  mounted(){
+    this.$emit('func', this.file+"111")
+  },
   data () {
     return {
       dataForm: {
@@ -54,9 +57,10 @@ export default {
       limit: 1,
       hideUpload: false, //是否显示上传图片的加号
       deleteImgFileList: [], //存已被删除了的图片的id
-    };
+    }
   },
   methods: {
+    
     handleAvatarSuccess (res, file) {
       this.imageUrl = URL.createObjectURL(file.raw);
     },
@@ -153,8 +157,8 @@ export default {
   border-color: #409eff;
 }
 .el-upload--picture-card {
-  width: 300px;
-  height: 300px;
+  width: 320px;
+  height: 320px;
   line-height: 300px;
   background: none;
 }
@@ -181,5 +185,27 @@ export default {
   width: 500px;
   height: 500px;
   display: block;
+}
+.el-button {
+    width: 250px;
+    height: 36px;
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    opacity: 80%;
+    background:rgb(233,152,186);
+    border: 1px solid rgb(233,152,186);
+    color: #606266;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: 0;
+    margin: 0 auto;
+    transition: .1s;
+    font-weight: 500;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
 }
 </style>
