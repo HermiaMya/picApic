@@ -417,7 +417,7 @@ export default {
 }
 .uupp .q-panel > div {
     height: 100%;
-    width: 200%;
+    width: 150%;
 }
 .el-avatar {
     display: inline-block;

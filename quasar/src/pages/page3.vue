@@ -99,7 +99,6 @@ export default {
         console.log(file.raw);
         console.log(this.dataForm.tab);
         formData.append("file", file.raw);
-        formData.append("tab",this.dataForm.tab);
       });
       // 以下代码可以根据实际情况自己来实现
       axios({
@@ -169,7 +168,8 @@ export default {
     return {
       dataForm: {
         imgFileList: [],
-        tab:""
+        tab:"",
+        size:""
       },
 
       //图片上传的参数
