@@ -10,64 +10,82 @@
           indicator-color="purple"
           align="justify"
         >
-          <q-tab name="mails" label="表情包" />
-          <q-tab name="alarms" label="多IP联动" />
-          <q-tab name="movies" label="AI换脸" />
+          <q-tab name="meme" label="表情包" />
+          <q-tab name="ip" label="多IP联动" />
+          <q-tab name="ai" label="AI换脸" />
         </q-tabs>
 
         <q-tab-panels v-model="tab" animated class="bg-primary text-white">
-          <q-tab-panel name="mails">
-            <q-img
+          <q-tab-panel name="meme">
+            <button>
+            <img
               src="https://i.loli.net/2021/11/25/WPAU3iMwQGsZ9Oj.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
-            <q-img
+            </button>
+            <button>
+            <img
               src="https://i.loli.net/2021/11/25/lrS3NR6Z8P7i4LC.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
-            <q-img
+            </button>
+            <button>
+            <img
               src="https://i.loli.net/2021/11/26/ePQBtmRw2HU1J7a.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
-            <q-img
+            </button>
+            <button>
+            <img
               src="https://i.loli.net/2021/11/26/rKXtIjnfFPvWLYx.gif"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
-            <q-img
+            </button>
+            <button>
+            <img
               src="https://i.loli.net/2021/11/26/jWDFoYUBrzsJSuA.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
+            </button>
           </q-tab-panel>
 
-          <q-tab-panel name="alarms">
-            <q-img
+          <q-tab-panel name="ip">
+            <button>
+            <img
               src="https://i.loli.net/2021/11/26/woV1Q5HBzqFChZu.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
-            <q-img
+            </button>
+            <button>
+            <img
               src="https://i.loli.net/2021/11/26/GWM38kB7IENyiSU.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
+            </button>
           </q-tab-panel>
 
-          <q-tab-panel name="movies">
-            <q-img
+          <q-tab-panel name="ai">
+            <button>
+            <img
               src="https://i.loli.net/2021/11/26/4RykKnvgwhBboXi.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
-            <q-img
+            </button>
+            <button>
+            <img
               src="https://i.loli.net/2021/11/26/Vo8IlULtAhyGPap.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
+            </button>
           </q-tab-panel>
         </q-tab-panels>
       </q-card>
@@ -79,7 +97,7 @@
 export default {
   data () {
     return {
-      tab: 'mails'
+      tab: 'meme'
     }
   }
 }
@@ -97,9 +115,5 @@ export default {
     right: 4px;
     bottom: 0;
     left: 4px;
-}
-.q-panel > div {
-    height: 100%;
-    width: 300%;
 }
 </style>
