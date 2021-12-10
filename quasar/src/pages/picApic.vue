@@ -7,7 +7,7 @@
         <div id="imagecolor" style="display: flex;margin-left: 50%;"></div>
 
         <div class=upload>上传ヾ(•ω•`)o
-            <input type="file" id="file1" name="file1" onchange="LoadImage()" />
+            <input type="file" id="file1" name="file1" v-on:change="LoadImage()" />
             <audio id="music"><source src="./page/sound/pikapik.mp3"> </audio>
         </div>
 
@@ -21,21 +21,21 @@
         <div id=container1>
 
             <div class=inputname>grayscale灰度</div>
-            <input value=0 min=0 max=100 step=any id=grayscale oninput="change1()" type=range>
+            <input value=0 min=0 max=100 step=any id=grayscale v-on:input="change1()" type=range>
             <input id="grayscale1" type=number onchange="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
             <audio id="music2"><source src="./page/sound/pika.mp3"> </audio>
 
             <div class=inputname>blur模糊度</div>
-            <input value=0 min=0 max=10 step=any id=blur oninput="change1()" type=range>
-            <input id="blur1" type=number onchange="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
+            <input value=0 min=0 max=10 step=any id=blur v-on:input="change1()" type=range>
+            <input id="blur1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
 
             <div class=inputname>brightness亮度</div>
-            <input value=100 min=0 max=200 step=any id=brightness oninput="change1()" type=range>
-            <input id="brightness1" type=number onchange="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
+            <input value=100 min=0 max=200 step=any id=brightness v-on:input="change1()" type=range>
+            <input id="brightness1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
 
             <div class=inputname>contrast对比度</div>
-            <input value=100 min=0 max=200 step=any id=contrast oninput="change1()" type=range>
-            <input id="contrast1" type=number onchange="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
+            <input value=100 min=0 max=200 step=any id=contrast v-on:input="change1()" type=range>
+            <input id="contrast1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
             <div id="reset" style="margin-left:0%;">Reset</div>
             <audio id="music3"><source src="./page/sound/pikachu.mp3"> </audio>
 
@@ -43,24 +43,24 @@
         </div>
         <div id=container2>
             <div class=inputname>hue-rotate色相</div>
-            <input value=0 min=0 max=360 step=any id=huerotate oninput="change1()" type=range>
-            <input id="hue-rotate" type=number onchange="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
+            <input value=0 min=0 max=360 step=any id=huerotate v-on:input="change1()" type=range>
+            <input id="hue-rotate" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
 
             <div class=inputname>invert反转</div>
-            <input value=0 min=0 max=100 step=any id=invert oninput="change1()" type=range>
-            <input id="invert1" type=number onchange="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
+            <input value=0 min=0 max=100 step=any id=invert v-on:input="change1()" type=range>
+            <input id="invert1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
 
             <div class=inputname>opacity透明度</div>
-            <input value=100 min=0 max=100 step=any id=opacity oninput="change1()" type=range>
-            <input id="opacity1" type=number onchange="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
+            <input value=100 min=0 max=100 step=any id=opacity v-on:input="change1()" type=range>
+            <input id="opacity1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
 
             <div class=inputname>saturate饱和度</div>
-            <input value=1 min=0 max=1 step=any id=saturate oninput="change1()" type=range>
-            <input id="saturate1" type=number onchange="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
+            <input value=1 min=0 max=1 step=any id=saturate v-on:input="change1()" type=range>
+            <input id="saturate1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
 
             <div class=inputname>sepia棕色效果</div>
-            <input value=0 min=0 max=100 step=any id=sepia oninput="change1()" type=range>
-            <input id="sepia1" type=number onchange="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
+            <input value=0 min=0 max=100 step=any id=sepia v-on:input="change1()" type=range>
+            <input id="sepia1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
 
         </div>
     </div>
@@ -85,7 +85,7 @@
 </template>
 <script>
 import html2canvas from "html2canvas";
-import canvas2image from './page/js/canvas2image';
+import Canvas2Image from './page/js/canvas2image';
 
 
 
@@ -704,10 +704,10 @@ input[type="range"] {
 }
 
 .zoomed {
-    background: rgb(225, 115, 92);
+    background: none;
     width: 100% !important;
     min-height: 600px !important;
-    box-shadow: 0 0 10px rgb(225, 115, 92);
+    box-shadow: 0 0 10px none;
     cursor: -webkit-zoom-out !important;
     cursor: zoom-out !important;
 }

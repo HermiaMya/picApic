@@ -43,7 +43,7 @@
           <el-button type="primary" @click="submitUpload()">确定</el-button>
         </el-form-item>
         </el-form>
-      <div class="q-pa-md"  style="float:center">
+     <div class="q-pa-md" >
     <div class="q-gutter-y-md" style="max-width: 600px">
       <q-card>
         <q-tabs
@@ -54,78 +54,92 @@
           indicator-color="purple"
           align="justify"
         >
-          <q-tab name="mails" label="表情包" />
-          <q-tab name="alarms" label="多IP联动" />
-          <q-tab name="movies" label="AI换脸" />
+          <q-tab name="meme" label="表情包" />
+          <q-tab name="ip" label="多IP联动" />
+          <q-tab name="ai" label="AI换脸" />
         </q-tabs>
 
         <q-tab-panels v-model="tab" animated class="bg-primary text-white">
-          <q-tab-panel name="mails">
-            <q-img
+          <q-tab-panel name="meme">
+            <button v-on:click="meme1">
+            <img
               src="https://i.loli.net/2021/11/25/WPAU3iMwQGsZ9Oj.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
-            <q-img
+            </button>
+            <button v-on:click="meme2">
+            <img
               src="https://i.loli.net/2021/11/25/lrS3NR6Z8P7i4LC.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
-            <q-img
+            </button>
+            <button v-on:click="meme3">
+            <img
               src="https://i.loli.net/2021/11/26/ePQBtmRw2HU1J7a.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
-            <q-img
+            </button>
+            <button v-on:click="meme4">
+            <img
               src="https://i.loli.net/2021/11/26/rKXtIjnfFPvWLYx.gif"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
-            <q-img
+            </button>
+            <button v-on:click="meme5">
+            <img
               src="https://i.loli.net/2021/11/26/jWDFoYUBrzsJSuA.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
+            </button>
           </q-tab-panel>
 
-          <q-tab-panel name="alarms">
-            <q-img
+          <q-tab-panel name="ip">
+            <button v-on:click="ip1">
+            <img
               src="https://i.loli.net/2021/11/26/woV1Q5HBzqFChZu.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
-            <q-img
+            </button>
+            <button v-on:click="ip2">
+            <img
               src="https://i.loli.net/2021/11/26/GWM38kB7IENyiSU.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
+            </button>
           </q-tab-panel>
 
-          <q-tab-panel name="movies">
+          <q-tab-panel name="ai">
               <div class="up2" style="float:left;width = 160px">
-              <el-upload
-                ref="upload"
-                action="#"
-                :file-list="dataForm.imgFileListTem"
-                list-type="picture-card"
-                :on-preview="handlePictureCardPreviewTem"
-                :on-change="OnChangeTem"
-                :on-remove="handleRemoveTem"
-                :on-exceed="handleExceed"
-                :limit="1"
-                :class="{ hide: hideUploadTem }"
-                accept="image/jpeg,image/png"
-                :auto-upload="false"
-              >
-                <i class="el-icon-plus"></i>
-              </el-upload>
-              </div>
-            <q-img
+                  <el-upload
+      ref="upload"
+    action="#"
+    :file-list="dataForm.imgFileListTem"
+    list-type="picture-card"
+    :on-preview="handlePictureCardPreviewTem"
+    :on-change="OnChangeTem"
+    :on-remove="handleRemoveTem"
+     :on-exceed="handleExceed"
+    :limit="1"
+    :class="{ hide: hideUploadTem }"
+    accept="image/jpeg,image/png"
+    :auto-upload="false"
+    >
+                    <i class="el-icon-plus"></i>
+                  </el-upload>
+              </div>
+            <img
               src="https://i.loli.net/2021/11/26/4RykKnvgwhBboXi.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
-            <q-img
+            <img
               src="https://i.loli.net/2021/11/26/Vo8IlULtAhyGPap.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
@@ -155,8 +169,27 @@ export default {
       document.querySelector("body").style.backgroundSize= 'cover';
   },
   methods: {
-		speak(msg){
-      console.log(msg);//我是子组件发送的消息！
+    
+	meme1(){
+        this.choice="meme1";
+    },
+    meme2(){
+        this.choice="meme2";
+    },
+    meme3(){
+        this.choice="meme3";
+    },
+    meme4(){
+        this.choice="meme4";
+    },
+    meme5(){
+        this.choice="meme5";
+    },
+    ip1(){
+        this.choice="ip1";
+    },
+    ip2(){
+        this.choice="ip2";
     },
     handleRemove(file, fileList) {
       this.hideUpload = fileList.length >= this.limitCount;
@@ -197,9 +230,11 @@ export default {
       this.dataForm.imgFileListTem.forEach((file) => {
         console.log(file.raw);
         console.log(file.size);
-        formData.append("file", file.raw);
+        formData.append("filetem", file.raw);
       });
       formData.append("tab",this.tab);
+      formData.append("choice",this.choice);
+
       // 以下代码可以根据实际情况自己来实现
       this.$http({
         url: this.uploadUrl,
@@ -294,7 +329,8 @@ export default {
         imgFileList: [],
         imgFileListTem: [],
       },
-      tab: 'mails',
+      tab: 'meme',
+      choice:'',
       //图片上传的参数
       visible: false,
       uploadUrl: "",

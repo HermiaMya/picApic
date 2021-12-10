@@ -32,7 +32,7 @@
               </el-upload>
             </div>
             <div style="float:right">
-              <el-avatar shape="square" :size="320":src="url"></el-avatar>
+              <el-avatar shape="square" :size="320" :src="url"></el-avatar>
             </div>
           </div>
           <el-dialog :visible.sync="dialogVisible" append-to-body>
@@ -50,7 +50,6 @@
 
 
 <script>
-import upload from '../components/upload.vue';
 import theme from '../components/theme.vue'
 export default {
   name: "PageIndex",
@@ -94,7 +93,6 @@ export default {
         console.log(file.raw);
         console.log(this.dataForm.tab);
         formData.append("file", file.raw);
-        formData.append("tab",this.dataForm.tab);
       });
       // 以下代码可以根据实际情况自己来实现
       axios({
@@ -164,7 +162,6 @@ export default {
     return {
       dataForm: {
         imgFileList: [],
-        tab:""
       },
 
       //图片上传的参数
