@@ -5,7 +5,7 @@
         <q-tabs
           v-model="tab"
           dense
-          class="bg-pink-1 text-grey-7"
+          class="bg-primry text-grey-7"
           active-color="primary"
           indicator-color="purple"
           align="justify"

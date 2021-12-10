@@ -49,7 +49,7 @@
         <q-tabs
           v-model="tab"
           dense
-          class="bg-pink-1 text-grey-7"
+          class="bg-primary text-grey-7"
           active-color="primary"
           indicator-color="purple"
           align="justify"
@@ -90,12 +90,22 @@
 
           <q-tab-panel name="alarms">
             <q-img
-              src="https://i.loli.net/2021/11/26/woV1Q5HBzqFChZu.jpg"
+              src="https://s3.bmp.ovh/imgs/2021/12/d535554cb9a33532.jpeg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
             <q-img
-              src="https://i.loli.net/2021/11/26/GWM38kB7IENyiSU.jpg"
+              src="https://s3.bmp.ovh/imgs/2021/12/b28c23f337121e1c.jpg"
+              spinner-color="white"
+              style="height: 140px; max-width: 150px"
+            />
+            <q-img
+              src="https://s3.bmp.ovh/imgs/2021/12/99d17e2ae8812ab7.jpg"
+              spinner-color="white"
+              style="height: 140px; max-width: 150px"
+            />
+            <q-img
+              src="https://s3.bmp.ovh/imgs/2021/12/be2f56180bd22af4.png"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
@@ -121,12 +131,12 @@
               </el-upload>
               </div>
             <q-img
-              src="https://i.loli.net/2021/11/26/4RykKnvgwhBboXi.jpg"
+              src="https://s3.bmp.ovh/imgs/2021/12/211390a78b26a171.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
             <q-img
-              src="https://i.loli.net/2021/11/26/Vo8IlULtAhyGPap.jpg"
+              src="https://s3.bmp.ovh/imgs/2021/12/720133b3016d8535.jpg"
               spinner-color="white"
               style="height: 140px; max-width: 150px"
             />
@@ -326,16 +336,16 @@ export default {
   line-height: 140px !important;
   background: none;
 }
-.q-pa-md .q-tab-panel {
-    padding: 30px;
+.uupp.q-pa-md .q-tab-panel {
+    padding: 20px;
 }
-.q-pa-md .absolute-full, .fullscreen, .fixed-full {
+.uupp.q-pa-md .absolute-full, .fullscreen, .fixed-full {
     top: 0px;
     right: 4px;
     bottom: 0;
     left: 4px;
 }
-.q-pa-md .q-panel > div {
+.uupp.q-pa-md .q-panel > div {
     height: 100%;
     width: 300%;
 }
@@ -389,7 +399,7 @@ export default {
   height: 500px;
   display: block;
 }
-.uupp .el-button {
+.el-button {
     width: 250px;
     height: 36px;
     display: inline-block;
@@ -410,7 +420,7 @@ export default {
     padding: 12px 20px;
     font-size: 14px;
     border-radius: 4px;
-    margin-left: 175px;
+    margin-left: 185px;
 }
 .uupp .q-tab-panel {
     padding: 2px;

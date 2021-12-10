@@ -238,7 +238,7 @@ export default {
   height: 500px;
   display: block;
 }
-.uup .el-button {
+.el-button {
     width: 250px;
     height: 36px;
     display: inline-block;
