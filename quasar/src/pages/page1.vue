@@ -54,64 +54,82 @@
           indicator-color="purple"
           align="justify"
         >
-          <q-tab name="mails" label="表情包" />
-          <q-tab name="alarms" label="多IP联动" />
-          <q-tab name="movies" label="AI换脸" />
+          <q-tab name="meme" label="表情包" />
+          <q-tab name="ip" label="多IP联动" />
+          <q-tab name="ai" label="AI换脸" />
         </q-tabs>
 
         <q-tab-panels v-model="tab" animated class="bg-primary text-white">
-          <q-tab-panel name="mails">
-            <q-img
+          <q-tab-panel name="meme">
+            <button>
+            <img
               src="https://i.loli.net/2021/11/25/WPAU3iMwQGsZ9Oj.jpg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
-            <q-img
+            </button>
+            <button>
+            <img
               src="https://i.loli.net/2021/11/25/lrS3NR6Z8P7i4LC.jpg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
-            <q-img
+            </button>
+            <button>
+            <img
               src="https://i.loli.net/2021/11/26/ePQBtmRw2HU1J7a.jpg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
-            <q-img
+            </button>
+            <button>
+            <img
               src="https://i.loli.net/2021/11/26/rKXtIjnfFPvWLYx.gif"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
-            <q-img
+            </button>
+            <button>
+            <img
               src="https://i.loli.net/2021/11/26/jWDFoYUBrzsJSuA.jpg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
+            </button>
           </q-tab-panel>
 
-          <q-tab-panel name="alarms">
-            <q-img
+          <q-tab-panel name="ip">
+            <button>
+            <img
               src="https://s3.bmp.ovh/imgs/2021/12/d535554cb9a33532.jpeg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
-            <q-img
+            </button>
+            <button>
+            <img
               src="https://s3.bmp.ovh/imgs/2021/12/b28c23f337121e1c.jpg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
-            <q-img
+            </button>
+            <button>
+            <img
               src="https://s3.bmp.ovh/imgs/2021/12/99d17e2ae8812ab7.jpg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
-            <q-img
+            </button>
+            <button>
+            <img
               src="https://s3.bmp.ovh/imgs/2021/12/be2f56180bd22af4.png"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
+            </button>
           </q-tab-panel>
 
-          <q-tab-panel name="movies">
+          <q-tab-panel name="ai">
               <div class="up2" style="float:left;width = 160px">
               <el-upload
                 ref="upload"
@@ -130,16 +148,20 @@
                 <i class="el-icon-plus"></i>
               </el-upload>
               </div>
-            <q-img
+            <button>
+            <img
               src="https://s3.bmp.ovh/imgs/2021/12/211390a78b26a171.jpg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
-            <q-img
+            </button>
+            <button>
+            <img
               src="https://s3.bmp.ovh/imgs/2021/12/720133b3016d8535.jpg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
+            </button>
           </q-tab-panel>
         </q-tab-panels>
       </q-card>
@@ -152,7 +174,8 @@
 
 
 <script>
-import theme from '../components/theme.vue'
+import theme from '../components/theme.vue';
+
 export default {
   name: "Page1",
   components: {
@@ -304,7 +327,7 @@ export default {
         imgFileList: [],
         imgFileListTem: [],
       },
-      tab: 'mails',
+      tab: 'meme',
       //图片上传的参数
       visible: false,
       uploadUrl: "",
@@ -324,9 +347,6 @@ export default {
 </script>
 
 <style>
-.q-pa-md .bg-primary {
-    background:rgb(234,184,219) !important;
-}
 .up2 .el-upload-list--picture-card .el-upload-list__item{
     width: 150px !important;
 }
@@ -399,35 +419,13 @@ export default {
   height: 500px;
   display: block;
 }
-.el-button {
-    width: 250px;
-    height: 36px;
-    display: inline-block;
-    line-height: 1;
-    white-space: nowrap;
-    cursor: pointer;
-    opacity: 80%;
-    background:rgb(233,152,186);
-    border: 1px solid rgb(233,152,186);
-    color: #606266;
-    -webkit-appearance: none;
-    text-align: center;
-    box-sizing: border-box;
-    outline: 0;
-    margin: 0 auto;
-    transition: .1s;
-    font-weight: 500;
-    padding: 12px 20px;
-    font-size: 14px;
-    border-radius: 4px;
-    margin-left: 185px;
-}
+
 .uupp .q-tab-panel {
     padding: 2px;
 }
 .uupp .q-panel > div {
     height: 100%;
-    width: 150%;
+    width: 140%;
 }
 .el-avatar {
     display: inline-block;
@@ -441,5 +439,31 @@ export default {
     line-height: 40px;
     font-size: 14px;
     border-radius: 6px;
+}
+.el-button {
+  width: 250px;
+  height: 36px;
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 80%;
+  background:rgb(233,152,186);
+  border: 1px solid rgb(233,152,186);
+  color: #606266;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0 auto;
+  transition: .1s;
+  font-weight: 500;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+  margin-left: 185px;
+}
+.q-pa-md .bg-primary {
+  background:rgb(234,184,219) !important;
 }
 </style>

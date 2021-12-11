@@ -238,29 +238,7 @@ export default {
   height: 500px;
   display: block;
 }
-.el-button {
-    width: 250px;
-    height: 36px;
-    display: inline-block;
-    line-height: 1;
-    white-space: nowrap;
-    cursor: pointer;
-    opacity: 80%;
-    background:rgb(233,152,186);
-    border: 1px solid rgb(233,152,186);
-    color: #606266;
-    -webkit-appearance: none;
-    text-align: center;
-    box-sizing: border-box;
-    outline: 0;
-    margin: 0 auto;
-    transition: .1s;
-    font-weight: 500;
-    padding: 12px 20px;
-    font-size: 14px;
-    border-radius: 4px;
-    margin-left: 185px;
-}
+
 .uup .q-tab-panel {
     padding: 2px;
 }
@@ -280,5 +258,28 @@ export default {
     line-height: 40px;
     font-size: 14px;
     border-radius: 6px;
+}
+.el-button {
+  width: 250px;
+  height: 36px;
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 80%;
+  background:rgb(233,152,186);
+  border: 1px solid rgb(233,152,186);
+  color: #606266;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0 auto;
+  transition: .1s;
+  font-weight: 500;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+  margin-left: 185px;
 }
 </style>
