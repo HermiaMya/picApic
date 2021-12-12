@@ -1,7 +1,8 @@
 <template>
   <q-page class="flex flex-center">
+    <div class="tup">
     <theme></theme>
-    <div class="three">
+    <div class="up">
       <el-form
           :model="dataForm"
           ref="dataForm"
@@ -43,6 +44,7 @@
           <el-button type="primary" @click="submitUpload()">确定</el-button>
         </el-form-item>
         </el-form>
+    </div>
     </div>
   </q-page>
 </template>
@@ -184,29 +186,7 @@ export default {
   margin-left: -4%;
   margin-top: 3%;
 }
-.el-button {
-    width: 250px;
-    height: 36px;
-    display: inline-block;
-    line-height: 1;
-    white-space: nowrap;
-    cursor: pointer;
-    opacity: 80%;
-    background:rgb(233,152,186);
-    border: 1px solid rgb(233,152,186);
-    color: #606266;
-    -webkit-appearance: none;
-    text-align: center;
-    box-sizing: border-box;
-    outline: 0;
-    margin: 0 auto;
-    transition: .1s;
-    font-weight: 500;
-    padding: 12px 20px;
-    font-size: 14px;
-    border-radius: 4px;
-    margin-left: 185px;
-}
+
 .el-avatar {
     display: inline-block;
     box-sizing: border-box;
@@ -219,5 +199,28 @@ export default {
     line-height: 40px;
     font-size: 14px;
     border-radius: 6px;
+}
+.el-button {
+  width: 250px;
+  height: 36px;
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 80%;
+  background:rgb(233,152,186);
+  border: 1px solid rgb(233,152,186);
+  color: #606266;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0 auto;
+  transition: .1s;
+  font-weight: 500;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+  margin-left: 185px;
 }
 </style>

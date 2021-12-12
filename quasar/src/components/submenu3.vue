@@ -10,7 +10,7 @@
           indicator-color="purple"
           align="justify"
         >
-          <q-tab name="carton" label="动漫脸" />
+          <q-tab name="carton" label="动漫画" />
           <q-tab name="pix" label="像素画" />
           <q-tab name="char" label="字符画" />
         </q-tabs>
@@ -24,9 +24,9 @@
               </q-badge>
               <q-slider
               v-model="value"
-              :min="0"
-              :max="1"
-              :step="0.01"
+              :min="1"
+              :max="9"
+              :step="2"
               label
               color="blue-4"
               />

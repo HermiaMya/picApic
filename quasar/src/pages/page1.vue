@@ -131,8 +131,8 @@
 
           <q-tab-panel name="ai">
               <div class="up2" style="float:left;width = 160px">
-                  <el-upload
-      ref="upload"
+     <el-upload
+    ref="upload"
     action="#"
     :file-list="dataForm.imgFileListTem"
     list-type="picture-card"
@@ -145,9 +145,9 @@
     accept="image/jpeg,image/png"
     :auto-upload="false"
     >
-                    <i class="el-icon-plus"></i>
-                  </el-upload>
-              </div>
+     <i class="el-icon-plus"></i>
+     </el-upload>
+ </div>
             <img
               src="https://i.loli.net/2021/11/26/4RykKnvgwhBboXi.jpg"
               spinner-color="white"
@@ -181,6 +181,7 @@ export default {
       "url('https://i.loli.net/2021/11/24/5kA2cdmWuKjJMDT.gif') ";
       document.querySelector("body").style.backgroundAttachment= 'fixed';
       document.querySelector("body").style.backgroundSize= 'cover';
+      
   },
   methods: {
     
