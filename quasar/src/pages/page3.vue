@@ -33,7 +33,8 @@
             </el-upload>
             </div>
             <div style="float:right">
-            <el-avatar shape="square" :size="320":src="url"></el-avatar>
+            <el-image  style="width:320px !important;height:auto !important" :src="url" :preview-src-list="srcList" v-if='url != ""'  ></el-image>
+            <el-avatar shape="square" :size="320" :src="url" v-if='url == ""'></el-avatar>
             </div>
           </div>
           <el-dialog :visible.sync="dialogVisible" append-to-body>
@@ -45,7 +46,7 @@
         </el-form-item>
       </el-form>
       </div>
-      <submenu3 @func="getchannel"></submenu3>
+      <submenu3 @func="getchannel" @size="getresult"></submenu3>
     </div>
   </q-page>
 </template>
@@ -67,12 +68,18 @@ export default {
       "url('https://i.loli.net/2021/11/24/5kA2cdmWuKjJMDT.gif') ";
       document.querySelector("body").style.backgroundAttachment= 'fixed';
       document.querySelector("body").style.backgroundSize= 'cover';
+      this.url=submitUpload();
+      this.srcList=srcappend();
   },
   methods: {
 
 		getchannel(data){
-          this.tab = data
-          console.log(this.tab)
+          this.dataForm.tab = data.tab
+          console.log(this.dataForm.tab)
+    },
+    getresult(data){
+          this.dataForm.submitResult = data.submitResult
+          console.log(this.dataForm.submitResult)
     },
     handleAvatarSuccess (res, file) {
       this.imageUrl = URL.createObjectURL(file.raw);
@@ -93,39 +100,36 @@ export default {
       }
       return isJPG && isLt2M;
     },
-    submitUpload () {
-      let formData = new FormData(); //  用FormData存放上传文件
+    async submitUpload() {
+    let formData = new FormData(); //  用FormData存放上传文件
       this.dataForm.imgFileList.forEach((file) => {
         console.log(file.raw);
         console.log(this.dataForm.tab);
         formData.append("file", file.raw);
       });
+      formData.append("tab", this.dataForm.tab);
+      formData.append("result", this.dataForm.submitResult);
       // 以下代码可以根据实际情况自己来实现
-      axios({
-        url: this.uploadUrl,
-        method: "post",
-        data: formData,
-        responseType:'blob',
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }).then(({ data }) => {
-        if (data && data.code === 0) {
-          // for (var i = 0; i < data.imgNameList.length; i++) {
-          //   this.imgNameList.push(data.imgNameList[i].name);
-          //   this.imgSize.push(data.imgNameList[i].size);
-          // }
-          // this.dataFormSubmit();
-          // 上传其他表格信息
-          this.$refs.upload.clearFiles();
-        } else {
-          this.$message.error(data.msg);
-        }
-        console.log("ok")
-        this.url=window.URL.createObjectURL(data.image_url);
-      });
-    },
-
+    let URL = "";
+        await this.$axios.post("http:127.0.0.1:8000/draw/main.html", formData)
+            .then(function (response) {
+                console.log(response);
+                console.log(response.data);
+                URL=response.data;
+            }).catch((error) => {
+     console.log(error)
+ })
+ this.url = URL;
+ this.srcList.append(this.url);
+ console.log(this.url);
+ console.log(URL);
+this.srcappend(this.url);
+ return this.url
+},
+srcappend(url){
+    this.srcList.append(url);
+    return this.srcList
+},
     //预览图片时
     handlePictureCardPreview (file) {
       this.dialogImageUrl = file.url;
@@ -169,18 +173,19 @@ export default {
       dataForm: {
         imgFileList: [],
         tab:"",
-        size:""
+        submitResult:""
       },
 
       //图片上传的参数
       visible: false,
-      uploadUrl: "http:127.0.0.1:8000/pixel/main.html",
+      uploadUrl: "http:127.0.0.1:8000/draw/main.html",
       dialogImageUrl: "",
       dialogVisible: false,
       limit: 1,
       hideUpload: false, //是否显示上传图片的加号
       deleteImgFileList: [], //存已被删除了的图片的id
-      url:""
+      url:"",
+      srcList:[]
     }
   }
 
@@ -238,7 +243,7 @@ export default {
   height: 500px;
   display: block;
 }
-.uup .el-button {
+.el-button {
     width: 250px;
     height: 36px;
     display: inline-block;
@@ -268,7 +273,20 @@ export default {
     height: 100%;
     width: 120%;
 }
- .el-avatar {
+ .el-image {
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    background:transparent;
+    border: 1px solid #c0ccda;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    border-radius: 6px;
+}
+.el-avatar {
     display: inline-block;
     box-sizing: border-box;
     text-align: center;

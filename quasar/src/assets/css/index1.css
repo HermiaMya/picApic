@@ -1,0 +1,41 @@
+.q-pa-md .bg-primary {
+  background:rgb(235, 221, 156) !important;
+}
+
+.bg-primary {
+  background:rgb(235, 221, 156) !important;
+}
+
+.el-button {
+  width: 250px;
+  height: 36px;
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 80%;
+  background:rgb(235, 221, 156);
+  border: 1px solid rgb(235, 221, 156);
+  color: #606266;
+  -webkit-appearance: none;
+  text-align: center;
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0 auto;
+  transition: .1s;
+  font-weight: 500;
+  padding: 12px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+  margin-left: 185px;
+}
+.body {
+  background: #fff;
+  background-image: url("https://s3.bmp.ovh/imgs/2021/12/a5ad734c3351e8bb.jpg");
+  /*background-image: -webkit-linear-gradient(top left, #fff, #b4b4b4);
+  background-image: linear-gradient(to bottom right, #fff, #b4b4b4);*/
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: "huxiaobo";
+}

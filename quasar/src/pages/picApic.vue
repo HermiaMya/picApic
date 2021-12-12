@@ -93,7 +93,7 @@ export default {
   name:"picApic",
   mounted () {
     document.querySelector("body").style.backgroundImage =
-      "url('https://s2.loli.net/2021/12/07/xshBDeJ8ILH7E5Y.jpg') ";
+      "url('https://i.loli.net/2021/11/24/5kA2cdmWuKjJMDT.gif') ";
       document.querySelector("body").style.backgroundAttachment= 'fixed';
       document.querySelector("body").style.backgroundSize= 'cover';
       var qulity = 100;
@@ -633,7 +633,7 @@ change2() {
 }
 body {
     background: #fff;
-    background-image: url("https://s2.loli.net/2021/12/07/xshBDeJ8ILH7E5Y.jpg");
+    background-image: url("https://i.loli.net/2021/11/24/5kA2cdmWuKjJMDT.gif");
     /*background-image: -webkit-linear-gradient(top left, #fff, #b4b4b4);
     background-image: linear-gradient(to bottom right, #fff, #b4b4b4);*/
     background-repeat: no-repeat;
@@ -693,7 +693,7 @@ input[type="range"] {
     margin-top: 2%;
     min-height: 400px;
     /*background-image: url(https://yt3.ggpht.com/-V92UP8yaNyQ/AAAAAAAAAAI/AAAAAAAAAAA/zOYDMx8Qk3c/s900-c-k-no/photo.jpg);*/
-    background-image: url("https://s2.loli.net/2021/12/07/xshBDeJ8ILH7E5Y.jpg");
+    background-image: url("https://i.loli.net/2021/11/24/5kA2cdmWuKjJMDT.gif");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
