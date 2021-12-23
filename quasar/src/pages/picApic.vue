@@ -7,7 +7,7 @@
         <div id="imagecolor" style="display: flex;margin-left: 50%;"></div>
 
         <div class=upload>上传ヾ(•ω•`)o
-            <input type="file" id="file1" name="file1" v-on:change="LoadImage()" />
+            <input type="file" id="file1" name="file1"  />
             <audio id="music"><source src="./page/sound/pikapik.mp3"> </audio>
         </div>
 
@@ -22,20 +22,20 @@
 
             <div class=inputname>grayscale灰度</div>
             <input value=0 min=0 max=100 step=any id=grayscale v-on:input="change1()" type=range>
-            <input id="grayscale1" type=number onchange="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
+            <input id="grayscale1" type=number onchange="change2()" style="border: none; border-radius: 16px;padding-left: 8px;width:80%" />
             <audio id="music2"><source src="./page/sound/pika.mp3"> </audio>
 
             <div class=inputname>blur模糊度</div>
             <input value=0 min=0 max=10 step=any id=blur v-on:input="change1()" type=range>
-            <input id="blur1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
+            <input id="blur1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;width:80%" />
 
             <div class=inputname>brightness亮度</div>
             <input value=100 min=0 max=200 step=any id=brightness v-on:input="change1()" type=range>
-            <input id="brightness1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
+            <input id="brightness1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;width:80%" />
 
             <div class=inputname>contrast对比度</div>
             <input value=100 min=0 max=200 step=any id=contrast v-on:input="change1()" type=range>
-            <input id="contrast1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
+            <input id="contrast1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;width:80%" />
             <div id="reset" style="margin-left:0%;">Reset</div>
             <audio id="music3"><source src="./page/sound/pikachu.mp3"> </audio>
 
@@ -44,29 +44,31 @@
         <div id=container2>
             <div class=inputname>hue-rotate色相</div>
             <input value=0 min=0 max=360 step=any id=huerotate v-on:input="change1()" type=range>
-            <input id="hue-rotate" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
+            <input id="hue-rotate" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;width:80%" />
 
             <div class=inputname>invert反转</div>
             <input value=0 min=0 max=100 step=any id=invert v-on:input="change1()" type=range>
-            <input id="invert1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
+            <input id="invert1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;width:80%" />
 
             <div class=inputname>opacity透明度</div>
             <input value=100 min=0 max=100 step=any id=opacity v-on:input="change1()" type=range>
-            <input id="opacity1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
+            <input id="opacity1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;width:80%" />
 
             <div class=inputname>saturate饱和度</div>
             <input value=1 min=0 max=1 step=any id=saturate v-on:input="change1()" type=range>
-            <input id="saturate1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
+            <input id="saturate1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;width:80%" />
 
             <div class=inputname>sepia棕色效果</div>
             <input value=0 min=0 max=100 step=any id=sepia v-on:input="change1()" type=range>
-            <input id="sepia1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;" />
+            <input id="sepia1" type=number v-on:change="change2()" style="border: none; border-radius: 16px;padding-left: 8px;width:80%" />
 
         </div>
     </div>
+    <!--
     <h2 class="toCanvas"> <a href="javascript:void(0);" class="intoCanvas"> 转成图片 </a></h2>
-
+    -->
     <h5>
+    <!--    
         <label for="imgW">宽度:</label>
         <input type="number" value="" id="imgW" class="imgw" placeholder="默认是原图宽度" />
         <label for="imgH">高度:</label>
@@ -78,8 +80,10 @@
 		                <option value="jpeg">jpeg</option>
 		                <option value="bmp">bmp</option>
 		            </select>
+    
         <button id="save" class="saveimg">确定</button>
     </h5>
+    -->
   </body>
 </div>
 </template>
@@ -102,7 +106,7 @@ export default {
     audio.pause(); //打开页面时无音乐
 };
 
-document.getElementById("file1").onchange = function() {
+document.getElementById("file1").onchange = function (){
     //function LoadImage(){
     $("#image").css("-webkit-filter", "none");
     $("#image").css("-moz-filter", "none");
@@ -632,7 +636,7 @@ change2() {
     padding: 0;
 }
 body {
-    background: #fff;
+    background: white;
     background-image: url("https://i.loli.net/2021/11/24/5kA2cdmWuKjJMDT.gif");
     /*background-image: -webkit-linear-gradient(top left, #fff, #b4b4b4);
     background-image: linear-gradient(to bottom right, #fff, #b4b4b4);*/
@@ -644,17 +648,31 @@ body {
 .upload {
     position: relative;
     display: inline-block;
-    background: rgb(225, 115, 92);
+    background: rgb(234,184,219);
     border-radius: 16px;
     padding: 4px 12px;
     overflow: hidden;
-    color: #fff;
+    color: white;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+    font-size: 16px;
+    width: 30%;
+    margin-left: 45%;
+    margin-top: 20px;
+}
+#reset{
+    display: inline-block;
+    background: rgb(223, 141, 175) !important ;
+    border-radius: 16px;
+    padding: 4px 12px;
+    overflow: hidden;
+    color: white;
     text-decoration: none;
     text-indent: 0;
     line-height: 20px;
     font-size: 20px;
-    width: 230px;
-    margin-left: 45%;
+    width: 80%;
     margin-top: 20px;
 }
 .upload input {
@@ -666,23 +684,28 @@ body {
 }
 
 .upload:hover {
-    background: rgb(215, 182, 111);
-    color: #000;
+    background: rgb(243, 220, 236);
+    color: black;
     text-decoration: none;
 }
 #reset,
 .inputname {
-    color: #000;
+    color: white;
     font-family: huxiaobo;
+    font-size:16px !important;
+    margin-left:40%;
 }
 
 #reset:hover{
-    background: #ef7126;
-    border-color: #218c8d;
+    border-color:white;
+    background: rgb(243, 220, 236);
+    color: black;
+    text-decoration: none;
 }
 
 input[type="range"] {
-    background: rgb(225, 115, 92);
+    background:rgb(234,184,219);
+    width:30%;
     /*------------------------------------------*/
 }
 #image {
@@ -753,11 +776,11 @@ input[type="range"] {
 .intoCanvas {
     position: relative;
     display: inline-block;
-    background: rgb(225, 115, 92);
+    background:rgb(234,184,219);
     border-radius: 16px;
     padding: 4px 12px;
     overflow: hidden;
-    color: #fff;
+    color: white;
     text-decoration: none;
     text-indent: 0;
     line-height: 20px;
@@ -772,12 +795,12 @@ input[type="range"] {
 .sel {
     position: relative;
     display: inline-block;
-    background: rgb(225, 115, 92);
+    background: rgb(234,184,219);
     border-radius: 16px;
     border: none;
     padding-left: 25px;
     overflow: hidden;
-    color: #fff;
+    color: white;
     text-decoration: none;
     text-indent: 0;
     line-height: 10px;
@@ -793,11 +816,11 @@ input[type="range"] {
 .saveimg {
     position: relative;
     display: inline-block;
-    background: rgb(225, 115, 92);
+    background:rgb(234,184,219);
     border-radius: 16px;
     border: none;
     overflow: hidden;
-    color: #fff;
+    color: white;
     text-decoration: none;
     text-indent: 0;
     line-height: 20px;
@@ -823,8 +846,8 @@ label {
     letter-spacing: 0.1em;
     -webkit-font-smoothing: antialiased;
     border-radius: 2px;
-    color: #fff;
-    text-shadow: 0 2px 3px #000;
+    color:white;
+    text-shadow: 0 2px 3px black;
 }
 
 .imgw {
@@ -849,7 +872,7 @@ label {
 }
 
 input[type="number"] {
-    font-size: 25px;
+    font-size: 15px;
     color: rgb(108, 107, 107);
     border: none;
     border-radius: 16px;
@@ -859,7 +882,7 @@ input[type="number"] {
 }
 
 input[type="text"] {
-    font-size: 25px;
+    font-size: 15px;
     height: 25px;
     color: rgb(108, 107, 107);
     border: none;
@@ -875,20 +898,20 @@ input[type="text"] {
     margin: 20px auto -5px;
     font-family: huxiaobo;
     line-height: 25px;
-    font-size: 30px;
+    font-size: 15px;
     font-weight: 400;
     letter-spacing: 0.1em;
     -webkit-font-smoothing: antialiased;
     border-radius: 2px;
-    color: #fff;
-    text-shadow: 0 2px 3px #000;
+    color:white;
+    text-shadow: 0 2px 3px black;
 }
 
 .inputname:first-letter {
     text-transform: uppercase;
-    color: rgb(225, 115, 92);
+    color:rgb(234,184,219);
     font-weight: bold;
-    font-size: 35px;
+    font-size: 20px;
 }
 
 .inputname:first-of-type {
@@ -897,9 +920,9 @@ input[type="text"] {
 
 input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 15px;
-    height: 15px;
-    background: rgb(247, 222, 130);
+    width: 10px;
+    height: 10px;
+    background: white;
     border: none;
     box-shadow: inset 0 1px 3px rgb(181, 150, 84), 0 0 2px rgb(181, 150, 84);
     border-radius: 50%;
@@ -922,7 +945,7 @@ input[type=range]::-moz-range-track {
 input[type=range]::-moz-range-thumb {
     width: 10px;
     height: 10px;
-    background: #fff;
+    background: white;
     border: 5px solid firebrick;
     box-shadow: inset 0 1px 1px rgb(225, 115, 92);
     border-radius: 50%;

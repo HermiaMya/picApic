@@ -1,6 +1,5 @@
 <template>
   <div class="all">
-    <link rel="stylesheet" id="style" href="src/assets/css/index.css">
     <div :style="conTop"></div>
     <q-layout view="hHh LpR fFf">
       <q-header bordered class="bg-primary text-white" height-hint="98">

@@ -22,7 +22,7 @@ export default {
   },
   mounted () {
     document.querySelector("body").style.backgroundImage =
-      "url('https://s2.loli.net/2021/12/07/gkBeQqGYPEtab6Z.jpg') ";
+      "url('https://s2.loli.net/2021/12/13/E4opxB8MgkFWzRJ.gif') ";
       document.querySelector("body").style.backgroundAttachment= 'fixed';
       document.querySelector("body").style.backgroundSize= 'cover';
   },

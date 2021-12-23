@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center">
-    <div class="tup">
+    <div class="uup">
     <theme></theme>
     <div class="up">
       <el-form
@@ -33,7 +33,8 @@
               </el-upload>
             </div>
             <div style="float:right">
-              <el-avatar shape="square" :size="320" :src="url"></el-avatar>
+              <el-image  style="width:320px !important;height:auto !important" :src="url"  v-if='url != ""'  ></el-image>
+              <el-avatar shape="square" :size="320" :src="url" v-if='url == ""'></el-avatar>
             </div>
           </div>
           <el-dialog :visible.sync="dialogVisible" append-to-body>
@@ -63,6 +64,7 @@ export default {
       "url('https://i.loli.net/2021/11/24/5kA2cdmWuKjJMDT.gif') ";
       document.querySelector("body").style.backgroundAttachment= 'fixed';
       document.querySelector("body").style.backgroundSize= 'cover';
+      this.url=submitUpload();
   },
   methods: {
 
@@ -89,37 +91,27 @@ export default {
       }
       return isJPG && isLt2M;
     },
-    submitUpload () {
-      let formData = new FormData(); //  用FormData存放上传文件
+    async submitUpload() {
+    let formData = new FormData(); //  用FormData存放上传文件
       this.dataForm.imgFileList.forEach((file) => {
         console.log(file.raw);
-        console.log(this.dataForm.tab);
         formData.append("file", file.raw);
       });
       // 以下代码可以根据实际情况自己来实现
-      axios({
-        url: this.uploadUrl,
-        method: "post",
-        data: formData,
-        responseType:'blob',
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }).then(({ data }) => {
-        if (data && data.code === 0) {
-          // for (var i = 0; i < data.imgNameList.length; i++) {
-          //   this.imgNameList.push(data.imgNameList[i].name);
-          //   this.imgSize.push(data.imgNameList[i].size);
-          // }
-          // this.dataFormSubmit();
-          // 上传其他表格信息
-          this.$refs.upload.clearFiles();
-        } else {
-          this.$message.error(data.msg);
-        }
-        console.log("ok")
-        this.url=window.URL.createObjectURL(data.image_url);
-      });
+      let URL = "";
+        await this.$axios.post("http:127.0.0.1:8000/zhiNengYouHua/main.html", formData)
+            .then(function (response) {
+                console.log(response);
+                console.log(response.data);
+                URL=response.data;
+                this.$refs.upload.clearFiles();
+            }).catch((error) => {
+        console.log(error)
+        })
+        this.url = URL;
+        console.log(this.url);
+        console.log(URL);
+        return this.url
     },
 
     //预览图片时
@@ -182,11 +174,87 @@ export default {
 </script>
 
 <style>
+.uup .up {
+  margin-left: -4%;
+  margin-top: 2%;
+}
+.uup .q-pa-md {
+    padding: 0px 100px;
+}
+.uup .avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.uup .avatar-uploader .el-upload:hover {
+  border-color: #409eff;
+}
+.uup .el-upload--picture-card {
+  width: 320px;
+  height: 320px;
+  line-height: 300px;
+  background: none;
+}
+.hide .el-upload--picture-card {
+  display: none;
+}
+.uup .el-upload-list--picture-card .el-upload-list__item {
+  overflow: hidden;
+  background-color: #fff;
+  border: 1px solid #c0ccda;
+  border-radius: 6px;
+  box-sizing: border-box;
+  width: 300px;
+  height: auto;
+  margin: 0 8px 8px 0;
+  display: inline-flex;
+}
+.uup .avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 500px;
+  height: 500px;
+  line-height: 500px;
+  text-align: center;
+}
+.uup .avatar {
+  width: 500px;
+  height: 500px;
+  display: block;
+}
+
+.uup .q-tab-panel {
+    padding: 2px;
+}
+.uup .q-panel > div {
+    height: 100%;
+    width: 120%;
+}
 .up {
   margin-left: -4%;
   margin-top: 3%;
 }
-
+.el-upload--picture-card {
+  width: 320px;
+  height: 320px;
+  line-height: 300px;
+  background: none;
+}
+ .el-image {
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    background:transparent;
+    border: 1px solid #c0ccda;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    border-radius: 6px;
+}
 .el-avatar {
     display: inline-block;
     box-sizing: border-box;

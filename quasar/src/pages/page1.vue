@@ -6,7 +6,7 @@
           :model="dataForm"
           ref="dataForm"
           label-width="80px"
-          style="width=800px;"
+          style="width=600px;"
         >
         <el-form-item :class="{ hide: hideUpload }">
           <div class="up">
@@ -32,7 +32,8 @@
               </el-upload>
             </div>
             <div style="float:right">
-              <el-avatar shape="square" :size="320" :src="url"></el-avatar>
+            <el-image  style="width:320px !important;height:auto !important" :src="url"  v-if='url != ""'  ></el-image>
+            <el-avatar shape="square" :size="320" :src="url" v-if='url == ""'></el-avatar>
             </div>
           </div>
           <el-dialog :visible.sync="dialogVisible" append-to-body>
@@ -43,8 +44,10 @@
           <el-button type="primary" @click="submitUpload()">确定</el-button>
         </el-form-item>
         </el-form>
-     <div class="q-pa-md" >
-    <div class="q-gutter-y-md" style="max-width: 600px">
+        <el-radio v-model="model" label="1" style="margin-left:300px"  ref="upload">普通模型</el-radio>
+  <el-radio v-model="model" label="2" style="margin-left:20px;margin-bottom:20px"  ref="upload">卷积模型</el-radio>
+     <div class="q-pa-md"  style="margin-top:20px">
+    <div class="q-gutter-y-md" style="width: 600px;">
       <q-card>
         <q-tabs
           v-model="tab"
@@ -61,102 +64,102 @@
 
         <q-tab-panels v-model="tab" animated class="bg-primary text-white">
           <q-tab-panel name="meme">
-            <button v-on:click="meme1">
+            <button v-on:click="meme1" >
             <img
               src="https://i.loli.net/2021/11/25/WPAU3iMwQGsZ9Oj.jpg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
             </button>
-            <button v-on:click="meme2">
+            <button v-on:click="meme2" >
             <img
               src="https://i.loli.net/2021/11/25/lrS3NR6Z8P7i4LC.jpg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
             </button>
-            <button v-on:click="meme3">
+            <button v-on:click="meme3" >
             <img
               src="https://i.loli.net/2021/11/26/ePQBtmRw2HU1J7a.jpg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
             </button>
-            <button v-on:click="meme4">
+            <button v-on:click="meme4" >
             <img
               src="https://i.loli.net/2021/11/26/rKXtIjnfFPvWLYx.gif"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
             </button>
-            <button v-on:click="meme5">
+            <button v-on:click="meme5" >
             <img
               src="https://i.loli.net/2021/11/26/jWDFoYUBrzsJSuA.jpg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
             </button>
           </q-tab-panel>
 
           <q-tab-panel name="ip">
-            <button v-on:click="ip1">
+            <button v-on:click="ip1" >
             <img
               src="https://s3.bmp.ovh/imgs/2021/12/d535554cb9a33532.jpeg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
             </button>
-            <button v-on:click="ip2">
+            <button v-on:click="ip2" >
             <img
               src="https://s3.bmp.ovh/imgs/2021/12/b28c23f337121e1c.jpg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
             </button>
-            <button v-on:click="ip3">
+            <button v-on:click="ip3"  >
             <img
               src="https://s3.bmp.ovh/imgs/2021/12/99d17e2ae8812ab7.jpg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
             </button>
-            <button v-on:click="ip4">
+            <button v-on:click="ip4"  ref="upload">
             <img
               src="https://s3.bmp.ovh/imgs/2021/12/be2f56180bd22af4.png"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
             </button>
           </q-tab-panel>
 
           <q-tab-panel name="ai">
-              <div class="up2" style="float:left;width = 160px">
-     <el-upload
-    ref="upload"
-    action="#"
-    :file-list="dataForm.imgFileListTem"
-    list-type="picture-card"
-    :on-preview="handlePictureCardPreviewTem"
-    :on-change="OnChangeTem"
-    :on-remove="handleRemoveTem"
-     :on-exceed="handleExceed"
-    :limit="1"
-    :class="{ hide: hideUploadTem }"
-    accept="image/jpeg,image/png"
-    :auto-upload="false"
-    >
-     <i class="el-icon-plus"></i>
-     </el-upload>
- </div>
+            <div class="up2" style="float:left;width = 160px">
+              <el-upload
+                ref="upload"
+                action="#"
+                :file-list="dataForm.imgFileListTem"
+                list-type="picture-card"
+                :on-preview="handlePictureCardPreviewTem"
+                :on-change="OnChangeTem"
+                :on-remove="handleRemoveTem"
+                :on-exceed="handleExceed"
+                :limit="1"
+                :class="{ hide: hideUploadTem }"
+                accept="image/jpeg,image/png"
+                :auto-upload="false"
+              >
+                <i class="el-icon-plus"></i>
+              </el-upload>
+            </div>
             <img
-              src="https://i.loli.net/2021/11/26/4RykKnvgwhBboXi.jpg"
+              src="https://s2.loli.net/2021/12/12/SbBgRiX7NDmk25W.jpg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
             <img
-              src="https://i.loli.net/2021/11/26/Vo8IlULtAhyGPap.jpg"
+              src="https://s2.loli.net/2021/12/12/TtCiWJmXby6GlL8.jpg"
               spinner-color="white"
-              style="height: 140px; max-width: 150px"
+              style="height: 140px; width: 140px"
             />
           </q-tab-panel>
         </q-tab-panels>
@@ -181,36 +184,37 @@ export default {
       "url('https://i.loli.net/2021/11/24/5kA2cdmWuKjJMDT.gif') ";
       document.querySelector("body").style.backgroundAttachment= 'fixed';
       document.querySelector("body").style.backgroundSize= 'cover';
+      this.url=submitUpload();
       
   },
   methods: {
     
-	meme1(){
-        this.choice="meme1";
+	  meme1(){
+      this.choice="meme1";
     },
     meme2(){
-        this.choice="meme2";
+      this.choice="meme2";
     },
     meme3(){
-        this.choice="meme3";
+      this.choice="meme3";
     },
     meme4(){
-        this.choice="meme4";
+      this.choice="meme4";
     },
     meme5(){
-        this.choice="meme5";
+      this.choice="meme5";
     },
     ip1(){
-        this.choice="ip1";
+      this.choice="ip1";
     },
     ip2(){
-        this.choice="ip2";
+      this.choice="ip2";
     },
     ip3(){
-        this.choice="ip3";
+      this.choice="ip3";
     },
     ip4(){
-        this.choice="ip4";
+      this.choice="ip4";
     },
     handleRemove(file, fileList) {
       this.hideUpload = fileList.length >= this.limitCount;
@@ -241,42 +245,43 @@ export default {
       }
       return isJPG && isLt2M;
     },
-    submitUpload () {
-      let formData = new FormData(); //  用FormData存放上传文件
+    
+    async submitUpload() {
+    let formData = new FormData(); //  用FormData存放上传文件
       this.dataForm.imgFileList.forEach((file) => {
         console.log(file.raw);
-        console.log(file.size);
+        console.log(this.tab);
         formData.append("file", file.raw);
+        this.dataForm.imgFileList = [];
+        this.dataForm.imgFileList.push(file);
       });
       this.dataForm.imgFileListTem.forEach((file) => {
         console.log(file.raw);
         console.log(file.size);
         formData.append("filetem", file.raw);
+        this.dataForm.imgFileListTem = [];
+        this.dataForm.imgFileListTem.push(file);
       });
       formData.append("tab",this.tab);
       formData.append("choice",this.choice);
-
+      formData.append("model",this.model);
       // 以下代码可以根据实际情况自己来实现
-      this.$http({
-        url: this.uploadUrl,
-        method: "post",
-        data: formData,
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      }).then(({ data }) => {
-        if (data && data.code === 0) {
-          // for (var i = 0; i < data.imgNameList.length; i++) {
-          //   this.imgNameList.push(data.imgNameList[i].name);
-          //   this.imgSize.push(data.imgNameList[i].size);
-          // }
-          // this.dataFormSubmit();
-          // 上传其他表格信息
-          this.$refs.upload.clearFiles();
-        } else {
-          this.$message.error(data.msg);
-        }
-      });
+      let URL = "";
+   
+        await this.$axios.post("http:127.0.0.1:8000/swap/main.html", formData)
+            .then(function (response) {
+                console.log(response);
+                console.log(response.data);
+                URL=response.data;
+                this.$refs.upload.clearFiles();
+            }).catch((error) => {
+        console.log(error)
+        })
+        this.url = URL;
+        console.log(this.url);
+        console.log(URL);
+        return this.url
+
     },
     //预览图片时
     handlePictureCardPreview (file) {
@@ -299,6 +304,7 @@ export default {
         this.$message.error("请检查，上传文件大小不能超过1G!");
         fileList.pop();
       }
+    
       this.dataForm.imgFileList.push(file);
       this.hideUpload = fileList.length >= this.limit;
     },
@@ -360,6 +366,8 @@ export default {
       dialogImageUrlTem: "",
       dialogVisibleTem: false,
       limit: 1,
+      url:"",
+      model:'1',
       hideUpload: false,
       hideUploadTem: false, //是否显示上传图片的加号
       deleteImgFileList: [], 
@@ -371,6 +379,13 @@ export default {
 </script>
 
 <style>
+.el-radio__input.is-checked .el-radio__inner {
+    border-color: rgb(233,152,186) !important;
+    background: rgb(233,152,186) !important;
+}
+.el-radio__input.is-checked+.el-radio__label {
+    color: rgb(197, 54, 114) !important;
+}
 .q-pa-md .bg-primary {
     background:rgb(234,184,219) !important;
 }

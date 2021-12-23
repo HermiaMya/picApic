@@ -33,7 +33,7 @@
             </el-upload>
             </div>
             <div style="float:right">
-            <el-image  style="width:320px !important;height:auto !important" :src="url" :preview-src-list="srcList" v-if='url != ""'  ></el-image>
+            <el-image  style="width:320px !important;height:auto !important" :src="url"  v-if='url != ""'  ></el-image>
             <el-avatar shape="square" :size="320" :src="url" v-if='url == ""'></el-avatar>
             </div>
           </div>
@@ -46,7 +46,123 @@
         </el-form-item>
       </el-form>
       </div>
-      <submenu3 @func="getchannel" @size="getresult"></submenu3>
+      <div class="q-pa-md">
+        <div class="q-gutter-y-md" style="width: 600px">
+          <q-card>
+            <q-tabs
+            v-model="tab"
+            dense
+            class="bg-primary text-grey-7"
+            active-color="primary"
+            indicator-color="purple"
+            align="justify"
+            >
+            <q-tab name="carton" label="动漫画" />
+            <q-tab name="pix" label="像素画" />
+            <q-tab name="char" label="字符画" />
+            </q-tabs>
+
+            <q-tab-panels v-model="tab" animated class="bg-primary text-white">
+              <q-tab-panel name="carton">
+                <q-form  class="q-gutter-md">
+                  <div class="slide" style="float:left">
+                    <q-badge color="blue-4">
+                      动漫系数:小-->大
+                    </q-badge>
+                    <q-slider
+                    v-model="value1"
+                    :min="1"
+                    :max="9"
+                    :step="2"
+                    label
+                    color="blue-4"
+                    />
+                    <!--
+                    <div>
+                      <q-btn class="button1" label="确定" type="submit"></q-btn>
+                    </div>-->
+                  </div>
+                </q-form>
+              <q-img
+                src="https://s2.loli.net/2021/12/10/uVzcQ6hWT1ZUdpO.jpg"
+                spinner-color="white"
+                style="height: 140px; width: 140px"
+              />
+              <q-img
+                src="https://s2.loli.net/2021/12/10/Uf4z6FQjgnIXMui.jpg"
+                spinner-color="white"
+                style="height: 140px; width: 140px"
+              />
+            </q-tab-panel>
+
+            <q-tab-panel name="pix">
+              <q-form  class="q-gutter-md">
+                <div class="slide" style="float:left">
+                  <q-badge color="blue-4">
+                    像素格尺寸:小-->大
+                  </q-badge>
+                  <q-slider
+                    v-model="value2"
+                    :min="0.005"
+                    :max="0.05"
+                    :step="0.001"
+                    label
+                    color="blue-4"
+                  />
+                  <!--
+                  <div>
+                    <q-btn class="button1" label="确定" type="submit"></q-btn>
+                  </div>-->
+                </div>
+              </q-form>
+              <q-img
+                src="https://s2.loli.net/2021/12/10/nkaiewZloN2TsUO.jpg"
+                spinner-color="white"
+                style="height: 140px; width: 140px"
+              />
+              <q-img
+                src="https://s2.loli.net/2021/12/10/t54n6sp9B1YRNSX.jpg"
+                spinner-color="white"
+                style="height: 140px; width: 140px"
+              />
+            </q-tab-panel>
+
+            <q-tab-panel name="char">
+              <q-form  class="q-gutter-md">
+              <div class="slide" style="float:left">
+                <q-badge color="blue-4">
+                  字符密度:稀-->密
+                </q-badge>
+                <q-slider
+                  v-model="value3"
+                  :min="4"
+                  :max="10"
+                  :step="0.1"
+                  label
+                  color="blue-4"
+                />
+                <!--
+                <div>
+                  <q-btn class="button1" label="确定" type="submit"></q-btn>
+                </div>
+                -->
+              </div>
+              </q-form>
+              <q-img
+                src="https://s2.loli.net/2021/12/10/nreHSTNWly3sOdj.jpg"
+                spinner-color="white"
+                style="height: 140px; width: 140px"
+              />
+              <q-img
+                src="https://s2.loli.net/2021/12/10/AINjhckVf7Rb19s.jpg"
+                spinner-color="white"
+                style="height: 140px; width: 140px"
+              />
+              </q-tab-panel>
+            </q-tab-panels>
+          </q-card>
+        </div>
+      </div>
     </div>
   </q-page>
 </template>
@@ -55,13 +171,11 @@
 
 <script>
 import theme from '../components/theme.vue'
-import submenu3 from '../components/submenu3.vue'
 import axios from 'axios'
 export default {
   name: "Page3",
   components: {
     theme,
-    submenu3
   },
   mounted () {
     document.querySelector("body").style.backgroundImage =
@@ -69,18 +183,8 @@ export default {
       document.querySelector("body").style.backgroundAttachment= 'fixed';
       document.querySelector("body").style.backgroundSize= 'cover';
       this.url=submitUpload();
-      this.srcList=srcappend();
   },
   methods: {
-
-		getchannel(data){
-          this.dataForm.tab = data.tab
-          console.log(this.dataForm.tab)
-    },
-    getresult(data){
-          this.dataForm.submitResult = data.submitResult
-          console.log(this.dataForm.submitResult)
-    },
     handleAvatarSuccess (res, file) {
       this.imageUrl = URL.createObjectURL(file.raw);
     },
@@ -101,35 +205,54 @@ export default {
       return isJPG && isLt2M;
     },
     async submitUpload() {
-    let formData = new FormData(); //  用FormData存放上传文件
+    let formData = new FormData(); 
+    console.log(this.dataForm.imgFileList.length) //  用FormData存放上传文件
       this.dataForm.imgFileList.forEach((file) => {
         console.log(file.raw);
-        console.log(this.dataForm.tab);
+        console.log(this.tab);
         formData.append("file", file.raw);
       });
-      formData.append("tab", this.dataForm.tab);
-      formData.append("result", this.dataForm.submitResult);
+      console.log(this.value);
+      formData.append("tab", this.tab);
+      formData.append("result", this.value);
       // 以下代码可以根据实际情况自己来实现
-    let URL = "";
-        await this.$axios.post("http:127.0.0.1:8000/draw/main.html", formData)
+      let URL = "";
+      if(this.tab == "carton"){
+            this.uploadUrl = "http:127.0.0.1:8000/dongManLian/main.html";
+            this.value=this.value1;
+            console.log(111);
+            console.log(this.uploadUrl)
+      }else if(this.tab=="pix"){
+            this.uploadUrl= "http:127.0.0.1:8000/xiangSuHua/main.html";
+            this.value=this.value2
+            console.log(222);
+            console.log(this.uploadUrl)
+      }else{
+           this.uploadUrl= "http:127.0.0.1:8000/draw/main.html";
+           this.value=this.value3
+           console.log(333);
+           console.log(this.uploadUrl)
+      }
+        await this.$axios.post(this.uploadUrl, formData)
             .then(function (response) {
                 console.log(response);
                 console.log(response.data);
                 URL=response.data;
+                this.$refs.upload.clearFiles();
             }).catch((error) => {
-     console.log(error)
- })
- this.url = URL;
- this.srcList.append(this.url);
- console.log(this.url);
- console.log(URL);
-this.srcappend(this.url);
- return this.url
-},
-srcappend(url){
-    this.srcList.append(url);
-    return this.srcList
-},
+        console.log(error)
+        })
+        this.url = URL;
+        this.srcList.append(this.url);
+        console.log(this.url);
+        console.log(URL);
+        this.srcappend(this.url);
+        return this.url
+    },
+    srcappend(url){
+      this.srcList.append(url);
+      return this.srcList
+    },
     //预览图片时
     handlePictureCardPreview (file) {
       this.dialogImageUrl = file.url;
@@ -172,20 +295,21 @@ srcappend(url){
     return {
       dataForm: {
         imgFileList: [],
-        tab:"",
-        submitResult:""
       },
-
+      value:Number,
+      value1:Number,
+      value2:Number,
+      value3:Number,
       //图片上传的参数
+      tab:"carton",
       visible: false,
-      uploadUrl: "http:127.0.0.1:8000/draw/main.html",
+      uploadUrl: "",
       dialogImageUrl: "",
       dialogVisible: false,
       limit: 1,
       hideUpload: false, //是否显示上传图片的加号
       deleteImgFileList: [], //存已被删除了的图片的id
       url:"",
-      srcList:[]
     }
   }
 
@@ -298,6 +422,26 @@ srcappend(url){
   padding: 12px 20px;
   font-size: 14px;
   border-radius: 4px;
-  margin-left: 185px;
+  margin-left: 220px;
+}
+.bg-primary {
+    background:rgb(234,184,219) !important;
+}
+.q-tab-panel {
+    padding: 30px;
+}
+.absolute-full, .fullscreen, .fixed-full {
+    top: 0px;
+    right: 4px;
+    bottom: 0;
+    left: 4px;
+}
+.slide{
+  padding: 0px 20px;
+  margin-top: 40px;
+  width: 180px;
+}
+.button1{
+  background-color:RGB(100,181,246);
 }
 </style>

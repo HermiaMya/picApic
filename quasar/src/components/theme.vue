@@ -1,8 +1,6 @@
 <template>
 </template>
 <script>
-import "../assets/css/index.css";
-import "../assets/css/index1.css"
 export default {
   name: "theme",
   data(){
